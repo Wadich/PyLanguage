@@ -1,0 +1,20 @@
+lang -> expr
+expr -> assign | operation | while_structure | for_structure | if_structure
+
+assign -> var assign_op formula
+operation -> var op formula
+
+formula -> (formula)
+formula -> var | digit
+formula -> formula op formula
+
+while_structure -> while l_round_bracket condition r_round_bracket l_brace body r_brace
+for_structure -> for l_round_bracket iter_assign r_round_bracket l_brace body r_brace
+if_structure -> if l_round_bracket condition r_round_bracket l_brace body r_brace
+
+body -> expr+
+iter_assign -> assign semicolon condition semicolon counter_update
+counter_update -> var op value (op value)*
+condition -> logic_expr (logic_op logic_expr)*
+logic_expr -> value comp_op value
+
